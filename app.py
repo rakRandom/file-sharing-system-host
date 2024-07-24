@@ -1,8 +1,6 @@
 from flask import Flask, send_from_directory, abort, render_template
-from modules.host_finder import HostFinder
 
 app = Flask(__name__)
-hotf = HostFinder()
 
 # Defines the directory where the files will be
 FILE_DIRECTORY = app.root_path + "\\download"
