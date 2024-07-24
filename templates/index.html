@@ -42,15 +42,27 @@
     </div>
 
     <script>
+        const input = document.getElementById("file-path");
         const button = document.getElementById("submit-button");
         
         button.addEventListener("click", e => {
             e.preventDefault();
 
-            button.innerText = "Downloading File..."
-            
-            button.innerText = "Download File"
+            button.innerText = "Downloading File...";
+            downloadFile(input.value);
+            button.innerText = "Download File";
         });
+
+        async function downloadFile(path) {
+            let link = document.createElement("a");
+            link.style.display = "hidden";
+            link.href = path;
+            link.download = "";
+
+            document.body.appendChild(link);
+            link.click();
+            link.remove();
+        }
     </script>
 </body>
 </html>
