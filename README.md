@@ -51,5 +51,8 @@ Use it in another device, such as your smartphone, but make sure that it is conn
 ### Method 2
 (WIP)
 
+## Usage
+At `./download` are the files that a client can download. Add, remove or modify the files within this folder to change what your client can download.
+
 ## Licence
 This repository is currently under a [LICENCE](LICENCE)
