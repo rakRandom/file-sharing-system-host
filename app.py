@@ -1,6 +1,7 @@
 from flask import Flask, send_from_directory, abort, render_template
 
 app = Flask(__name__)
+app.config['TEMPLATES_AUTO_RELOAD'] = True
 
 # Defines the directory where the files will be
 FILE_DIRECTORY = app.root_path + "\\download"
