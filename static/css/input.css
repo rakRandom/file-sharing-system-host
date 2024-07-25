@@ -1,3 +1,10 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+
+@layer components {
+    .header-button {
+        @apply flex w-[36px] h-[36px] p-1.5 rounded-full border bg-[#AAA] bg-opacity-0 max-sm:active:bg-opacity-50 sm:hover:bg-opacity-50;
+    }
+}
