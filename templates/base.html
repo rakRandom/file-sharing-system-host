@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="{{url_for('static', filename='favicon.ico')}}">
+    <link href="{{url_for('static', filename='css/output.css')}}" rel="stylesheet">
+    <title> File Sharing System {% if subtitle is defined %} - {{ subtitle }} {% endif %} </title>
+    {% block head %}{% endblock %}
+</head>
+<body class="w-full h-svh overflow-hidden">
+    {% block body %}{% endblock %}
+</body>
+</html>
