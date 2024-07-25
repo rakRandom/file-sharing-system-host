@@ -1,0 +1,20 @@
+<header class="z-50 text-white flex flex-col w-full divide-y
+        *:py-1">
+    <div class="flex justify-around items-center w-full shadow dark:bg-blue-500">
+        <nav>
+            Menu
+        </nav>
+        <h1 class="text-2xl font-semibold">
+            {{ title }}
+        </h1>
+        <button type="button" onclick="changeTheme()">
+            <img src="{{url_for('static', filename='img/light-mode.svg')}}" alt="Theme">
+        </button>
+    </div>
+    <div class="text-center dark:bg-blue-600">
+        Connected with 
+        <button type="button" class="hover:underline">
+            {{request.host}}
+        </button>
+    </div>
+</header>

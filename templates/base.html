@@ -1,14 +1,27 @@
 <!DOCTYPE html>
+
+{% set title = 'File Sharing System' %}
+
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" href="{{url_for('static', filename='favicon.ico')}}">
     <link href="{{url_for('static', filename='css/output.css')}}" rel="stylesheet">
-    <title> File Sharing System {% if subtitle is defined %} - {{ subtitle }} {% endif %} </title>
+    <title> 
+        {% if subtitle is defined %} 
+            {{ subtitle }} - 
+        {% endif %}
+        {{ title }}
+    </title>
+    <script src="{{url_for('static', filename='js/theme_control.js')}}"></script>
     {% block head %}{% endblock %}
 </head>
-<body class="w-full h-svh overflow-hidden">
+<body class="dark w-full h-svh overflow-hidden" onload="setTheme()">
+    <div class="absolute w-full">
+        {% include 'components/header.html' %}
+    </div>
+    
     {% block body %}{% endblock %}
 </body>
 </html>
