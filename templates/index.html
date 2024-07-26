@@ -1,5 +1,30 @@
 {% extends 'base.html' %}
 
 {% block body %}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.0.0/socket.io.js"></script>
 
+<div class="flex items-center justify-center w-full h-full">
+    <h1>Network Scanner</h1>
+    <button id="scan-button">Start Scan</button>
+    <ul id="results"></ul>
+</div>
+
+
+<script>
+    const socket = io();
+
+    document.getElementById('scan-button').addEventListener('click', () => {
+        socket.emit('start_scan', { ports: [80, 8000, 8080] });
+    });
+
+    socket.on('scan_results', (results) => {
+        const resultsList = document.getElementById('results');
+        resultsList.innerHTML = '';
+        results.forEach(result => {
+            const listItem = document.createElement('li');
+            listItem.textContent = result;
+            resultsList.appendChild(listItem);
+        });
+    });
+</script>
 {% endblock %}
