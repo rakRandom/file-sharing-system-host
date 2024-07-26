@@ -3,6 +3,10 @@
 {% set subtitle = 'Download' %}
 
 {% block body %}
+<div class="absolute w-full">
+    {% include 'components/header.html' %}
+</div>
+
 <div class="flex items-center justify-center w-full h-full">
     <div class="w-fit h-fit p-8 bg-white border rounded-lg shadow-md">
         <header class="mb-6">
@@ -26,11 +30,12 @@
                 required
             >
             
-            <button 
-                type="submit"
-                id="submit-button" 
-                class="text-white font-semibold w-full mx-auto p-3 bg-blue-500 rounded-md transition-colors group-invalid:bg-blue-300 group-invalid:pointer-events-none group-valid:hover:bg-blue-600"
-            >
+            <button type="submit" id="submit-button" 
+                class="default-button 
+                group-invalid:bg-blue-300 
+                group-invalid:pointer-events-none 
+                max-sm:group-valid:active:bg-blue-600
+                sm:group-valid:hover:bg-blue-600">
                 Download File
             </button>
         </form>

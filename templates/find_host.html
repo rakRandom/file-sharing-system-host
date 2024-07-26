@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+
+{% block head %}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.0.0/socket.io.js"></script>
+{% endblock %}
+
+{% block body %}
+{% include 'components/header.html' %}
+
+<div class="flex flex-col max-sm:mt-4 sm:mt-16 w-full h-full">
+    <div class="max-sm:w-full p-6 bg-slate-50 border sm:rounded-md shadow">
+        <h1 class="text-center text-3xl font-semibold">
+            Host Finder
+        </h1>
+        <hr class="default-hr">
+        <button id="scan-button" class="default-button duration-75 active:bg-blue-600">
+            Start Scan
+        </button>
+
+        <div id="results-div" class="flex flex-col h-[300px]">
+            <hr class="default-hr">
+            <div class="flex-1 min-h-0 border-2 p-2 rounded-lg">
+                <ul id="results" class="text-center h-full px-2 divide-y-[2px] divide-gray-200 overflow-auto *:py-1"></ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    const socket = io();
+
+    document.getElementById('scan-button').addEventListener('click', () => {
+        socket.emit('find_hosts_process');
+    });
+
+    socket.on('find_hosts_process', (results) => {
+        const resultsList = document.getElementById('results');
+        resultsList.innerHTML = '';
+
+        if (results.length == 0) {
+            alert("No host found");
+            return;
+        }
+        
+        results.forEach(result => {
+            const listItem = document.createElement('li');
+            listItem.textContent = result;
+            resultsList.appendChild(listItem);
+        });
+
+        document.getElementById("results-div").classList.remove("hidden");
+    });
+</script>
+{% endblock %}

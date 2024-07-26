@@ -5,6 +5,32 @@
 
 @layer components {
     .header-button {
-        @apply flex w-[36px] h-[36px] p-1.5 rounded-full border bg-[#AAA] bg-opacity-0 max-sm:active:bg-opacity-50 sm:hover:bg-opacity-50;
+        @apply 
+            flex 
+            w-[36px] 
+            h-[36px] 
+            p-1.5 
+            rounded-full 
+            border 
+            bg-[#AAA] 
+            bg-opacity-0 
+            max-sm:active:bg-opacity-50 
+            sm:hover:bg-opacity-50;
+    }
+
+    .default-button {
+        @apply 
+            text-white 
+            font-semibold 
+            w-full 
+            mx-auto 
+            p-3 
+            bg-blue-500 
+            rounded-md 
+            transition-colors;
+    }
+
+    hr {
+        @apply  border-t-2 my-4;
     }
 }
