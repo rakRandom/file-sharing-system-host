@@ -12,11 +12,11 @@ hostf = HostFinder()
 FILE_DIRECTORY = app.root_path + "\\download"
 
 
-@socketio.on('find_hosts_process')
-def find_hosts_process():
+@socketio.on('find_hosts')
+def find_hosts():
     def background_task(scan_ports):
         results = hostf.scan_network(scan_ports)
-        socketio.emit('find_hosts_process', results)
+        socketio.emit('find_hosts', results)
     
     socketio.start_background_task(target=background_task, scan_ports=[2024])
 
@@ -25,9 +25,9 @@ def find_hosts_process():
 def index():
     return render_template("index.html")
 
-@app.route("/find_hosts")
-def find_hosts():
-    return render_template("find_host.html")
+@app.route("/host_finder")
+def host_finder():
+    return render_template("host_finder.html")
 
 @app.route("/download")
 def download():

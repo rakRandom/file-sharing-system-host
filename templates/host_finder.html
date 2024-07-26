@@ -7,7 +7,7 @@
 {% block body %}
 {% include 'components/header.html' %}
 
-<div class="flex flex-col max-sm:mt-4 sm:mt-16 w-full h-full">
+<div class="flex flex-col max-sm:mt-8 sm:mt-16 w-full h-full">
     <div class="max-sm:w-full p-6 bg-slate-50 border sm:rounded-md shadow">
         <h1 class="text-center text-3xl font-semibold">
             Host Finder
@@ -30,10 +30,10 @@
     const socket = io();
 
     document.getElementById('scan-button').addEventListener('click', () => {
-        socket.emit('find_hosts_process');
+        socket.emit('find_hosts');
     });
 
-    socket.on('find_hosts_process', (results) => {
+    socket.on('find_hosts', (results) => {
         const resultsList = document.getElementById('results');
         resultsList.innerHTML = '';
 
