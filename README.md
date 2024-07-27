@@ -1,6 +1,10 @@
 # File Sharing System Host
 
-(WIP)
+Things to do:
+Create File Sharing System Client
+Add desktop version for the navbar
+Add dark theme
+Deploy it
 
 ## How to start the Flask Server
 
