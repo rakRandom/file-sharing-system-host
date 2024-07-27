@@ -14,6 +14,8 @@
     }
 </script>
 
+{% set connected = session.get("connection-code") != 0 and session.get("connection-code") is not none %}
+
 <header class="z-50 text-white flex flex-col w-full divide-y">
     <div class="flex justify-around items-center w-full py-2 shadow bg-blue-500">
         <button type="menu" onclick="toggleMenu()" class="header-button">
@@ -33,14 +35,23 @@
         </button>
     </div>
 
-    <nav class="h-0 py-0 bg-blue-700 overflow-hidden" id="dropdown-menu">
+    <nav class="h-0 py-0 px-2 bg-blue-700 overflow-hidden" id="dropdown-menu">
         <ul class="
-            text-lg px-2 divide-y
+            text-lg mx-2 divide-y rounded-md overflow-hidden
             *:*:block *:*:pl-2 *:*:py-1.5 *:*:w-full
             hover:*:*:bg-white hover:*:*:text-black"
         >
             <li><a href="/">
-                Home
+                {% if connected %}
+                Reconnect
+                {% else %}
+                Connect
+                {% endif %}
+            </a></li>
+
+            {% if connected %}
+            <li><a href="/disconnect">
+                Disconnect
             </a></li>
             <li><a href="/files">
                 List Files
@@ -48,13 +59,20 @@
             <li><a href="/download">
                 Download
             </a></li>
+            {% endif %}
+
+            <li><a href="/host_finder">
+                Host Finder
+            </a></li>
         </ul>
     </nav>
 
+    {% if connected %}
     <div class="text-center py-2 bg-blue-600">
         Connected with 
         <button type="button" onclick="copyHost()" class="max-sm:active:underline sm:hover:underline">
-            {{request.host}}
+            {{session.get("connection-code")[0]}}
         </button>
     </div>
+    {% endif %}
 </header>

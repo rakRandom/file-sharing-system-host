@@ -17,7 +17,13 @@
     <script src="{{url_for('static', filename='js/theme_control.js')}}"></script>
     {% block head %}{% endblock %}
 </head>
-<body class="dark w-full overflow-y-auto bg-red-500" onload="setTheme()">
-    {% block body %}{% endblock %}
+<body class="flex flex-col w-full min-h-svh overflow-y-auto" onload="setTheme()">
+    <div class="flex-1">
+        {% block body %}{% endblock %}
+    </div>
+
+    <footer class="text-center max-xs:text-sm text-gray-500 w-full my-4">
+        This page was made by <a href="https://github.com/rakrandom" target="_blank" class="text-black hover:underline">Fellipe Leonardo</a>
+    </footer>
 </body>
 </html>

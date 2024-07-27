@@ -30,6 +30,41 @@
             transition-colors;
     }
 
+    .default-text-input {
+        @apply 
+            text-lg 
+            w-full 
+            py-1 
+            px-2 
+            border-2 
+            border-slate-300 
+            rounded-md 
+            bg-slate-50
+            outline-none
+            focus:border-orange-400;
+    }
+
+    .default-upper-container {
+        @apply 
+            flex 
+            items-center 
+            justify-center 
+            max-sm:mt-8 
+            sm:mt-16 
+            w-full h-full;
+    }
+
+    .default-lower-container {
+        @apply 
+            w-full 
+            h-fit 
+            p-8 
+            bg-white 
+            border 
+            sm:rounded-lg 
+            shadow-md;  /* Add sm:w-[(value)] class at the element */
+    }
+
     hr {
         @apply  border-t-2 my-4;
     }

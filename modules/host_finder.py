@@ -29,7 +29,7 @@ class HostFinder():
         base_ip = '.'.join(ip_parts[:-1])
         return base_ip
 
-    def scan_network(self, ports) -> list[str]:
+    def scan_network(self, ports=[2024]) -> list[str]:
         self.__result = list()
         base_ip = self.get_base_ip()
         threads = []

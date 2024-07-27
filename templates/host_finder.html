@@ -1,5 +1,7 @@
 {% extends 'base.html' %}
 
+{% set subtitle = 'Host Finder' %}
+
 {% block head %}
 <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.0.0/socket.io.js"></script>
 {% endblock %}
@@ -7,48 +9,30 @@
 {% block body %}
 {% include 'components/header.html' %}
 
-<div class="flex flex-col max-sm:mt-8 sm:mt-16 w-full h-full">
-    <div class="max-sm:w-full p-6 bg-slate-50 border sm:rounded-md shadow">
+<div class="default-upper-container">
+    <div class="default-lower-container sm:w-[400px]">
         <h1 class="text-center text-3xl font-semibold">
             Host Finder
         </h1>
-        <hr class="default-hr">
+        <hr>
         <button id="scan-button" class="default-button duration-75 active:bg-blue-600">
             Start Scan
         </button>
-
         <div id="results-div" class="flex flex-col h-[300px]">
-            <hr class="default-hr">
+            <hr class="mb-0">
+            <p class="text-center text-sm my-2 opacity-50">
+                Click on the desired host to be redirected
+            </p>
             <div class="flex-1 min-h-0 border-2 p-2 rounded-lg">
-                <ul id="results" class="text-center h-full px-2 divide-y-[2px] divide-gray-200 overflow-auto *:py-1"></ul>
+                <ul 
+                    id="results" 
+                    class="text-center h-full px-2 divide-y-4 divide-white overflow-auto 
+                           *:*:block *:*:py-1 *:*:bg-gray-100 *:*:rounded-md hover:*:*:bg-gray-200"
+                ></ul>
             </div>
         </div>
     </div>
 </div>
 
-<script>
-    const socket = io();
-
-    document.getElementById('scan-button').addEventListener('click', () => {
-        socket.emit('find_hosts');
-    });
-
-    socket.on('find_hosts', (results) => {
-        const resultsList = document.getElementById('results');
-        resultsList.innerHTML = '';
-
-        if (results.length == 0) {
-            alert("No host found");
-            return;
-        }
-        
-        results.forEach(result => {
-            const listItem = document.createElement('li');
-            listItem.textContent = result;
-            resultsList.appendChild(listItem);
-        });
-
-        document.getElementById("results-div").classList.remove("hidden");
-    });
-</script>
+<script src="{{url_for('static', filename='js/host_finder.js')}}"></script>
 {% endblock %}

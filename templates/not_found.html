@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% set subtitle = 'Not Found' %}
+
+{% block body %}
+<div class="flex items-center justify-center w-full h-svh">
+    <div class="text-center max-xs:w-full border xs:rounded-md xs:w-[400px] shadow overflow-hidden">
+        <div class="shadow-lg">
+            <h1 class="text-5xl text-blue-600 font-bold py-6 bg-white">
+                Error 404
+            </h1>
+            <h2 class="text-2xl py-3 border-t-2">
+                This page does not exist.
+            </h2>
+        </div>
+        <a href="/" class="block text-white font-semibold py-2 bg-blue-600 hover:underline">
+            Return to the main page
+        </a>
+    </div>
+</div>
+{% endblock %}

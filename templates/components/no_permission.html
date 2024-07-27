@@ -1,0 +1,6 @@
+{% if session.get("connection-code") == 0 or session.get("connection-code") is none %}
+<script>
+    alert("You don't have permission to access this page.");
+    window.location.href = "/";
+</script>
+{% endif %}

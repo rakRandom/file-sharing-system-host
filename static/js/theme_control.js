@@ -1,13 +1,13 @@
 if (localStorage.getItem("dark-mode") === undefined)
-    localStorage.setItem("dark-mode", "true");
+    localStorage.setItem("dark-mode", "false");
 
 function setTheme() {
     let isDarkMode = localStorage.getItem("dark-mode");
     if (isDarkMode === undefined)
         return;
 
-    if (isDarkMode === "false")
-        document.body.classList.remove("dark");
+    if (isDarkMode === "true")
+        document.body.classList.add("dark");
 }
 
 function changeTheme() {

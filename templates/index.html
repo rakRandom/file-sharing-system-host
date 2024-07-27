@@ -1,4 +1,50 @@
 {% extends 'base.html' %}
 
 {% block body %}
+{% include 'components/header.html' %}
+
+<div class="default-upper-container">
+    <div class="default-lower-container sm:w-fit">
+        <header class="mb-6">
+            <h1 class="text-center text-3xl font-semibold mb-2">
+                Connect to Host
+            </h1>
+        </header>
+        <hr>
+        <form action="/" class="group" autocomplete="off">
+            <div class="flex flex-col gap-4">
+                <input 
+                    type="text" 
+                    id="host-code" 
+                    placeholder="Host"
+                    value="{{host if host is not none else ''}}"
+                    class="default-text-input"
+                    required
+                >
+                <input 
+                    type="text" 
+                    id="host-password" 
+                    placeholder="Password"
+                    class="default-text-input"
+                    required
+                >
+            </div>
+            <hr>
+            <button type="submit" id="submit-button" 
+                class="default-button 
+                group-invalid:bg-blue-300 
+                group-invalid:pointer-events-none 
+                max-sm:group-valid:active:bg-blue-600
+                sm:group-valid:hover:bg-blue-600">
+                Connect
+            </button>
+            <hr>
+            <p class="text-center text-sm text-gray-500">
+                Check the <a href="/host_finder" class="text-black hover:underline">Host Finder</a> if you don't know the host code.
+            </p>
+        </form>
+    </div>
+</div>
+
+<script src="{{url_for('static', filename='js/connect.js')}}"></script>
 {% endblock %}

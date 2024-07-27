@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+{% set subtitle = 'Files' %}
+
+{% block head %}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.0.0/socket.io.js"></script>
+{% endblock %}
+
+{% block body %}
+{% include 'components/no_permission.html' %}
+{% include 'components/header.html' %}
+
+<div class="default-upper-container">
+    <div class="default-lower-container w-[400px]">
+        <h1 class="text-center text-3xl font-semibold">
+            Files List
+        </h1>
+        <hr>
+        <button type="button" onclick="getList()" class="default-button">
+            Update
+        </button>
+        <hr>
+        <div id="results-div" class="flex flex-col h-[280px]">
+            <div class="flex-1 min-h-0 border-2 p-2 rounded-lg">
+                <ul id="results" class="text-center h-full px-2 divide-y-4 divide-white overflow-auto *:py-1 *:bg-gray-100 *:rounded-md hover:*:bg-gray-200"></ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="{{url_for('static', filename='js/get_list.js')}}"></script>
+{% endblock %}

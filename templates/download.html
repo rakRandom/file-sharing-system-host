@@ -3,28 +3,24 @@
 {% set subtitle = 'Download' %}
 
 {% block body %}
+{% include 'components/no_permission.html' %}
 {% include 'components/header.html' %}
 
-<div class="flex items-center justify-center max-sm:mt-8 sm:mt-16 w-full h-full">
-    <div class="w-fit h-fit p-8 bg-white border rounded-lg shadow-md">
-        <header class="mb-6">
-            <h1 class="text-center text-3xl font-semibold mb-2">
-                File Sharing System (FSS)
+<div class="default-upper-container">
+    <div class="default-lower-container w-[400px]">
+        <header class="">
+            <h1 class="text-center text-3xl font-semibold">
+                Download File
             </h1>
-            <p>
-                Connected with 
-                <a href="/" class="hover:underline">
-                    {{request.host}}
-                </a>
-            </p>
         </header>
-
+        <hr>
         <form action="#" class="group flex flex-col gap-4">
             <input 
                 type="text" 
                 id="file-path" 
-                placeholder="Write the file path here"
-                class="text-lg w-full py-1 px-2 border-2 rounded-md bg-slate-50"
+                value="{{name if name is not none else ''}}"
+                placeholder="File name"
+                class="default-text-input"
                 required
             >
             
@@ -36,31 +32,12 @@
                 sm:group-valid:hover:bg-blue-600">
                 Download File
             </button>
+            <p class="text-center text-sm text-gray-500">
+                Check <a href="/files" class="text-black hover:underline">files</a> if you want the list of files. ;)
+            </p>
         </form>
     </div>
 </div>
 
-<script>
-    const input = document.getElementById("file-path");
-    const button = document.getElementById("submit-button");
-    
-    button.addEventListener("click", e => {
-        e.preventDefault();
-
-        button.innerText = "Downloading File...";
-        downloadFile(input.value);
-        button.innerText = "Download File";
-    });
-
-    async function downloadFile(path) {
-        let link = document.createElement("a");
-        link.style.display = "hidden";
-        link.href = "/download/" + path;
-        link.download = "";
-
-        document.body.appendChild(link);
-        link.click();
-        link.remove();
-    }
-</script>
+<script src="{{url_for('static', filename='js/download.js')}}"></script>
 {% endblock %}
