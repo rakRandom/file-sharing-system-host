@@ -14,7 +14,7 @@ class HostFinder():
     def check_host(self, ip: str, port: int) -> None:
         try:
             sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-            sock.settimeout(0.5)
+            sock.settimeout(1)
             error = sock.connect_ex((ip, port))
             if error == 0:
                 self.__result.append(f"{ip}:{port}")
