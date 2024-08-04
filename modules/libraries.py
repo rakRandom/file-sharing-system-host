@@ -8,6 +8,6 @@ try:
     from modules.host_finder import HostFinder
     from dotenv import load_dotenv
     import os, requests
-except:
-    print("Error at libraries.py importations")
+except Exception as e:
+    print("Error at libraries.py importations:", e)
     exit(-1)
