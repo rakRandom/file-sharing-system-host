@@ -894,6 +894,15 @@ hr {
   padding-bottom: 1.5rem;
 }
 
+.px-1 {
+  padding-left: 0.25rem;
+  padding-right: 0.25rem;
+}
+
+.text-left {
+  text-align: left;
+}
+
 .text-center {
   text-align: center;
 }
@@ -988,6 +997,21 @@ hr {
   padding-bottom: 0.375rem;
 }
 
+.\*\:px-1 > * {
+  padding-left: 0.25rem;
+  padding-right: 0.25rem;
+}
+
+.\*\:\*\:px-1 > * > * {
+  padding-left: 0.25rem;
+  padding-right: 0.25rem;
+}
+
+.\*\:\*\:px-1\.5 > * > * {
+  padding-left: 0.375rem;
+  padding-right: 0.375rem;
+}
+
 .\*\:\*\:pl-2 > * > * {
   padding-left: 0.5rem;
 }
@@ -1069,5 +1093,39 @@ hr {
   .group:valid .sm\:group-valid\:hover\:bg-blue-600:hover {
     --tw-bg-opacity: 1;
     background-color: rgb(37 99 235 / var(--tw-bg-opacity));
+  }
+}
+
+@media (min-width: 768px) {
+  .md\:h-\[360px\] {
+    height: 360px;
+  }
+
+  .md\:h-\[380px\] {
+    height: 380px;
+  }
+
+  .md\:h-\[400px\] {
+    height: 400px;
+  }
+
+  .md\:h-\[420px\] {
+    height: 420px;
+  }
+
+  .md\:h-\[440px\] {
+    height: 440px;
+  }
+
+  .md\:w-\[\] {
+    width: ;
+  }
+
+  .md\:w-\[560px\] {
+    width: 560px;
+  }
+
+  .md\:w-\[360px\] {
+    width: 360px;
   }
 }

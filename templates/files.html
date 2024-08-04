@@ -11,7 +11,7 @@
 {% include 'components/header.html' %}
 
 <div class="default-upper-container">
-    <div class="default-lower-container w-[400px]">
+    <div class="default-lower-container w-[400px] md:w-[560px]">
         <h1 class="text-center text-3xl font-semibold">
             Files List
         </h1>
@@ -20,9 +20,9 @@
             Update
         </button>
         <hr>
-        <div id="results-div" class="flex flex-col h-[280px]">
+        <div id="results-div" class="flex flex-col h-[280px] md:h-[440px]">
             <div class="flex-1 min-h-0 border-2 p-2 rounded-lg">
-                <ul id="results" class="default-link-list"></ul>
+                <ul id="results" class="text-left default-link-list *:*:px-1.5"></ul>
             </div>
         </div>
     </div>
