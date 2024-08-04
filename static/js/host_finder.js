@@ -1,8 +1,11 @@
 const socket = io();
 
-document.getElementById('scan-button').addEventListener('click', () => {
+const emitFindHosts = () => {
     socket.emit('find_hosts');
-});
+}
+
+emitFindHosts();
+document.getElementById('scan-button').addEventListener('click', emitFindHosts);
 
 socket.on('find_hosts', (results) => {
     const resultsList = document.getElementById('results');
