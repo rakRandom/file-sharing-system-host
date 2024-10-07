@@ -11,18 +11,24 @@
 {% include 'components/header.html' %}
 
 <div class="default-upper-container">
-    <div class="default-lower-container w-[400px] md:w-[560px] max-md:px-0">
-        <h1 class="text-center text-3xl font-semibold max-md:mx-8">
-            Files List
-        </h1>
-        <hr class="max-md:mx-8">
-        <button type="button" onclick="getList()" class="default-button block max-md:mx-auto max-md:w-[80%]">
+    <div class="
+        flex gap-8 w-full mx-8 shadow-none
+        max-md:default-lower-container max-md:w-[400px] max-md:px-0 md:border-x-0"
+        >
+        <button type="button" onclick="getList()" class="block default-button h-fit">
             Update
         </button>
-        <hr class="max-md:mx-8">
-        <div id="results-div" class="flex flex-col h-[280px] md:h-[440px]">
-            <div class="flex-1 min-h-0 border-y-2 md:border-x-2 p-2 md:rounded-lg">
-                <ul id="results" class="text-left default-link-list *:*:px-1.5 *:*:w-full"></ul>
+        <hr class="max-md:mx-8 md:hidden">
+        <div id="results-div" class="flex flex-col h-[280px] md:h-[440px] w-full">
+            <div 
+                class="
+                    flex-1 min-h-0 border-y-2 md:border-x-2 p-2 md:rounded-lg"
+                >
+                <ul 
+                    id="results" 
+                    class="
+                    text-left default-link-list *:*:flex *:*:px-1.5 *:*:w-full"
+                ></ul>
             </div>
         </div>
     </div>
