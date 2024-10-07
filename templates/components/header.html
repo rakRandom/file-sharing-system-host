@@ -7,72 +7,75 @@
     function toggleMenu() {
         const menu = document.getElementById("dropdown-menu");
         
-        menu.classList.toggle("h-0");
-        menu.classList.toggle("h-fit");
-        menu.classList.toggle("py-0");
-        menu.classList.toggle("py-1.5");
+        menu.classList.toggle("translate-x-0");
     }
 </script>
 
 {% set connected = session.get("connection-code") != 0 and session.get("connection-code") is not none %}
 
-<header class="z-50 text-white flex flex-col w-full divide-y">
-    <div class="flex justify-around items-center w-full py-2 shadow bg-blue-500">
-        <button type="menu" onclick="toggleMenu()" class="header-button">
-            <svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" viewBox="0 0 50 50" fill="#FFF" class="h-full">
-                <path d="M 5 8 A 2.0002 2.0002 0 1 0 5 12 L 45 12 A 2.0002 2.0002 0 1 0 45 8 L 5 8 z M 5 23 A 2.0002 2.0002 0 1 0 5 27 L 45 27 A 2.0002 2.0002 0 1 0 45 23 L 5 23 z M 5 38 A 2.0002 2.0002 0 1 0 5 42 L 45 42 A 2.0002 2.0002 0 1 0 45 38 L 5 38 z"></path>
-            </svg>
-        </button>
+<div class="mb-28">
+    <header class="absolute z-50 text-white flex flex-col w-full divide-y">
+        <div class="flex justify-around items-center w-full py-2 shadow bg-blue-500">
+            <button type="menu" onclick="toggleMenu()" class="header-button">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" viewBox="0 0 50 50" fill="#FFF" class="h-full">
+                    <path d="M 5 8 A 2.0002 2.0002 0 1 0 5 12 L 45 12 A 2.0002 2.0002 0 1 0 45 8 L 5 8 z M 5 23 A 2.0002 2.0002 0 1 0 5 27 L 45 27 A 2.0002 2.0002 0 1 0 45 23 L 5 23 z M 5 38 A 2.0002 2.0002 0 1 0 5 42 L 45 42 A 2.0002 2.0002 0 1 0 45 38 L 5 38 z"></path>
+                </svg>
+            </button>
 
-        <h1 class="text-[1.65rem] font-semibold">
-            {{ title }}
-        </h1>
+            <h1 class="text-[1.65rem] font-semibold">
+                {{ title }}
+            </h1>
 
-        <button type="button" onclick="changeTheme()" class="header-button">
-            <svg xmlns="http://www.w3.org/2000/svg" class="w-full h-full" viewBox="0 -960 960 960" fill="#FFF">
-                <path d="M480-360q50 0 85-35t35-85q0-50-35-85t-85-35q-50 0-85 35t-35 85q0 50 35 85t85 35Zm0 80q-83 0-141.5-58.5T280-480q0-83 58.5-141.5T480-680q83 0 141.5 58.5T680-480q0 83-58.5 141.5T480-280ZM200-440H40v-80h160v80Zm720 0H760v-80h160v80ZM440-760v-160h80v160h-80Zm0 720v-160h80v160h-80ZM256-650l-101-97 57-59 96 100-52 56Zm492 496-97-101 53-55 101 97-57 59Zm-98-550 97-101 59 57-100 96-56-52ZM154-212l101-97 55 53-97 101-59-57Zm326-268Z"/>
-            </svg>
-        </button>
-    </div>
+            <button type="button" onclick="changeTheme()" class="header-button">
+                <svg xmlns="http://www.w3.org/2000/svg" class="w-full h-full" viewBox="0 -960 960 960" fill="#FFF">
+                    <path d="M480-360q50 0 85-35t35-85q0-50-35-85t-85-35q-50 0-85 35t-35 85q0 50 35 85t85 35Zm0 80q-83 0-141.5-58.5T280-480q0-83 58.5-141.5T480-680q83 0 141.5 58.5T680-480q0 83-58.5 141.5T480-280ZM200-440H40v-80h160v80Zm720 0H760v-80h160v80ZM440-760v-160h80v160h-80Zm0 720v-160h80v160h-80ZM256-650l-101-97 57-59 96 100-52 56Zm492 496-97-101 53-55 101 97-57 59Zm-98-550 97-101 59 57-100 96-56-52ZM154-212l101-97 55 53-97 101-59-57Zm326-268Z"/>
+                </svg>
+            </button>
+        </div>
 
-    <nav class="h-0 py-0 px-2 bg-blue-700 overflow-hidden" id="dropdown-menu">
-        <ul class="
-            text-lg mx-2 divide-y rounded-md overflow-hidden
-            *:*:block *:*:pl-2 *:*:py-1.5 *:*:w-full
-            hover:*:*:bg-white hover:*:*:text-black"
-        >
-            <li><a href="/">
-                {% if connected %}
-                Reconnect
-                {% else %}
-                Connect
-                {% endif %}
-            </a></li>
+        {% if connected %}
+        <div class="text-center py-2 bg-blue-600">
+            Connected with 
+            <button type="button" onclick="copyHost()" class="max-sm:active:underline sm:hover:underline">
+                {{session.get("connection-code")[0]}}
+            </button>
+        </div>
+        {% endif %}
 
-            {% if connected %}
-            <li><a href="/disconnect">
-                Disconnect
-            </a></li>
-            <li><a href="/files">
-                List Files
-            </a></li>
-            <li><a href="/download">
-                Download
-            </a></li>
-            {% endif %}
-
-            <li><a href="/host_finder">
-                Host Finder
-            </a></li>
-        </ul>
-    </nav>
-
-    {% if connected %}
-    <div class="text-center py-2 bg-blue-600">
-        Connected with 
-        <button type="button" onclick="copyHost()" class="max-sm:active:underline sm:hover:underline">
-            {{session.get("connection-code")[0]}}
-        </button>
-    </div>
-    {% endif %}
-</header>
+        <div class="relative">
+            <div class="absolute top-4 left-4 w-fit">
+                <nav class="p-2 rounded-lg bg-blue-700 overflow-hidden transition-transform -translate-x-[calc(100%+2rem)] duration-500" id="dropdown-menu">
+                    <ul class="
+                        text-lg mx-2 divide-y rounded-md overflow-hidden
+                        *:*:block *:*:pl-2 *:*:py-1.5 *:*:w-full
+                        hover:*:*:bg-white hover:*:*:text-black"
+                    >
+                        <li><a href="/">
+                            {% if connected %}
+                            Reconnect
+                            {% else %}
+                            Connect
+                            {% endif %}
+                        </a></li>
+        
+                        {% if connected %}
+                        <li><a href="/disconnect">
+                            Disconnect
+                        </a></li>
+                        <li><a href="/files">
+                            List Files
+                        </a></li>
+                        <li><a href="/download">
+                            Download
+                        </a></li>
+                        {% endif %}
+        
+                        <li><a href="/host_finder">
+                            Host Finder
+                        </a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+</div>
