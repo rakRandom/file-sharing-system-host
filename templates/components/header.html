@@ -32,17 +32,16 @@
         </div>
 
         <div class="relative">
-            <div class="absolute top-4 left-8 w-fit">
+            <div class="absolute top-4 left-8 w-fit transition-transform max-sm:-translate-x-[calc(100%+2rem)] sm:-translate-y-[calc(100%+2rem)] duration-500" id="dropdown-menu">
                 <nav 
                     class="
-                        p-1 rounded-lg 
-                        bg-white border-blue-600 border-2 
-                        overflow-hidden 
-                        transition-transform -translate-y-[calc(100%+2rem)] duration-500" 
-                    id="dropdown-menu">
+                        rounded-md 
+                        bg-white border-blue-600 border-[3px] 
+                        overflow-hidden" 
+                    >
                     <ul 
                         class="
-                            text-lg text-black divide-y-2 divide-neutral-100 rounded-md overflow-hidden
+                            text-lg text-black divide-y-2 divide-neutral-100
                             *:*:block *:*:px-6 *:*:py-2 hover:*:*:bg-neutral-100 active:*:*:bg-blue-600 active:*:*:text-white"
                         >
                         <li><a href="/">
@@ -84,6 +83,7 @@
     function toggleMenu() {
         const menu = document.getElementById("dropdown-menu");
         
-        menu.classList.toggle("translate-y-0");
+        menu.classList.toggle("max-sm:-translate-x-10");
+        menu.classList.toggle("sm:translate-y-0");
     }
 </script>

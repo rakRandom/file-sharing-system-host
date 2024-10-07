@@ -11,21 +11,25 @@
             h-[36px] 
             p-1.5 
             rounded-full 
-            border 
+            border-2 
             bg-[#AAA] 
             bg-opacity-0 
             max-sm:active:bg-opacity-50 
-            sm:hover:bg-opacity-50;
+            sm:hover:bg-opacity-25
+            sm:active:bg-opacity-50;
     }
 
     .default-button {
         @apply 
             text-white 
             font-semibold 
-            p-3 
+            p-2 
             bg-blue-500 
             rounded-md 
-            transition-colors;
+            transition-colors duration-75
+            border-2 border-transparent 
+            hover:bg-blue-600
+            active:bg-blue-700;
     }
 
     .default-text-input {
@@ -55,6 +59,7 @@
     .default-lower-container {
         @apply  
             p-8 
+            pt-6
             bg-white 
             border 
             sm:rounded-lg 
